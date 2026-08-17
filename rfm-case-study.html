@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RFM Customer Segmentation & Churn Risk — Noman Aslam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="nav">
+    <div class="nav-name">Noman Aslam</div>
+    <div class="nav-links">
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="case-header">
+    <a class="back-link" href="index.html#projects">← All projects</a>
+    <h1>Advanced SQL: RFM Customer Segmentation & Churn Risk Identification</h1>
+  </div>
+
+  <div class="case-body">
+
+    <h2>Problem</h2>
+    <p>
+      An earlier segmentation project (LTV-only, percentile-based) grouped customers
+      into High/Mid/Low value tiers, but that grouping couldn't distinguish an
+      actively engaged high spender from one who had already gone quiet. That
+      project's own limitations section flagged this gap: without a churn signal
+      inside the high-value tier, the recommendation to "protect high-value accounts"
+      had no way to size a target list or set a concrete retention goal.
+    </p>
+    <p>
+      This project closes that gap using RFM (Recency, Frequency, Monetary) scoring
+      on the same Contoso dataset (PostgreSQL), run through DBeaver/pgAdmin.
+    </p>
+
+    <h2>Data & Tools</h2>
+    <p>
+      Same customer/order base as the segmentation project — order-level transaction
+      data with customer ID, order date, quantity, net price, and exchange rate.
+      Built and run in PostgreSQL.
+    </p>
+
+    <h2>Approach</h2>
+    <p>Three CTEs, stacked:</p>
+    <ol>
+      <li><strong>rfm_base</strong> — per customer: distinct order count (frequency), total revenue in USD (monetary, converted via exchange rate), and days since last order (recency, computed against the dataset's global max order date).</li>
+      <li><strong>scored</strong> — each dimension scored into quintiles with NTILE(5), ordered so that score 5 always means "best" (most recent, most frequent, highest spend).</li>
+      <li><strong>labeled</strong> — a CASE statement combining the three scores into five segments: Champions, At Risk (High Value), Mid-Tier, New/Low Frequency, and Lost.</li>
+    </ol>
+    <p>Before trusting the output, two checks were run rather than assuming correctness:</p>
+    <ul>
+      <li><strong>NULL/zero-division risk</strong> on the fields feeding the revenue calculation — none found across netprice, exchangerate, quantity, or orderdate.</li>
+      <li><strong>NTILE tie-breaking at score boundaries</strong> — where two customers share the exact same days-since-last-order but land in different score buckets, since NTILE's tie-breaking is otherwise arbitrary. 91 of 49,487 customers (0.18%) sit on one of three boundary values where this happens. Small enough not to move the segment totals below, but worth naming rather than ignoring.</li>
+    </ul>
+
+    <h2>Key Decisions</h2>
+    <p>
+      The segment definitions matter more than the scoring mechanics. Champions
+      requires all three scores ≥4 — recent, frequent, and high-spend simultaneously.
+      At Risk (High Value) requires recency ≤2 combined with monetary ≥4 — it
+      deliberately ignores frequency, because a customer can have gone quiet after
+      a genuinely high-value purchase history regardless of how often they ordered.
+      That's the segment the prior LTV-only approach couldn't see: it would have
+      lumped these customers in with active top spenders on lifetime value alone.
+    </p>
+
+    <h2>Results</h2>
+    <table>
+      <tr><th>Segment</th><th>Customers</th><th>% of Base</th><th>Total Revenue</th><th>% of Revenue</th></tr>
+      <tr><td>Champions</td><td>7,493</td><td>15.1%</td><td>$68.2M</td><td>33.1%</td></tr>
+      <tr><td>Mid-Tier</td><td>20,461</td><td>41.4%</td><td>$64.5M</td><td>31.3%</td></tr>
+      <tr><td>At Risk (High Value)</td><td>6,878</td><td>13.9%</td><td>$56.9M</td><td>27.6%</td></tr>
+      <tr><td>New/Low Frequency</td><td>5,453</td><td>11.0%</td><td>$10.8M</td><td>5.2%</td></tr>
+      <tr><td>Lost</td><td>9,202</td><td>18.6%</td><td>$5.9M</td><td>2.9%</td></tr>
+    </table>
+    <p>
+      6,878 customers — 13.9% of the base — carry $56.9M in historical revenue but
+      have gone quiet on recency. Under the prior LTV-only segmentation, this group
+      was invisible, folded into the same "High Value" bucket as customers still
+      actively buying. Lost customers, at 18.6% of the base, account for only 2.9%
+      of revenue — confirming that segment isn't worth aggressive win-back spend.
+    </p>
+
+    <!-- Chart image: upload 4_rfm_segmentation.png to this folder and
+         make sure the title reads correctly before it goes live -->
+    <img src="4_rfm_segmentation.png" alt="Revenue and customer distribution by RFM segment"
+         style="width:100%; border:1px solid var(--line); margin:20px 0;">
+
+    <h2>Business Implications</h2>
+    <p>
+      This gives the prior segmentation project's second priority the number it
+      was missing: a defined, dollar-quantified population to target instead of a
+      general instruction to protect high-value accounts. A win-back campaign
+      aimed specifically at the At Risk (High Value) segment — rather than the
+      broader high-value tier — has a concrete target list and a revenue figure
+      to size the effort against. Lost customers can be explicitly excluded from
+      retention spend given their negligible revenue share.
+    </p>
+
+    <h2>Limitations & Next Steps</h2>
+    <div class="flag-note">
+      <ul style="margin:0;">
+        <li>The RFM scores are a point-in-time snapshot — segment stability across multiple scoring periods hasn't been checked.</li>
+        <li>No win-back campaign has been run against this segmentation yet, so the recommendation is untested in practice.</li>
+        <li>0.18% of customers sit on a scoring boundary where NTILE's tie-break is arbitrary rather than meaningful — doesn't move the headline numbers, but worth knowing if this logic gets reused on data with more clustering at boundary values.</li>
+      </ul>
+    </div>
+
+    <h2>Technical Detail</h2>
+    <p>
+      Query file: <code>4_rfm_segmentation.sql</code>, run against the same
+      PostgreSQL database as the segmentation and cohort analysis project.
+      <br>
+      <a href="https://github.com/NomanAslam12/Int_SQL_Project">View on GitHub →</a>
+      <!-- update this link if the RFM query lives in a different repo -->
+    </p>
+
+  </div>
+
+  <footer>
+    Noman Aslam — Karachi, Pakistan
+  </footer>
+</div>
+
+</body>
+</html>
