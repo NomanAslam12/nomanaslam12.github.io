@@ -4,19 +4,21 @@
    should need to touch colors/fonts.
    ===================================================== */
 :root {
-  --paper: #F4F3EF;         /* page background */
-  --ink: #1B1F1D;           /* main text */
-  --ink-soft: #52584F;      /* secondary text */
-  --line: #D8D6CE;          /* hairline borders/dividers */
-  --accent: #1E5A4A;        /* deep teal-green — links, highlights */
-  --accent-soft: #E7EFEA;   /* pale accent background (tags, chips) */
-  --flag: #A8501F;          /* used sparingly for "at risk" style callouts */
+  --paper: #EFEDE6;         /* page background, below the hero */
+  --ink-panel: #16211D;     /* dark ledger-green hero panel */
+  --ink-panel-text: #EDEAE0;
+  --ink: #14170F;           /* main text on light background */
+  --ink-soft: #5B5F52;      /* secondary text */
+  --line: #CFCBBD;          /* hairline borders/dividers */
+  --accent: #C9622A;        /* burnt amber — the one accent color, used sparingly */
+  --accent-soft: #FBEDE2;   /* pale accent background (tags, chips) */
+  --flag: #8A3A16;          /* darker amber for callouts */
 
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Inter', -apple-system, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-  --max-width: 880px;
+  --max-width: 1040px;
 }
 
 * { box-sizing: border-box; }
@@ -43,72 +45,102 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   padding: 0 24px;
 }
 
-/* ---------- NAV ---------- */
+/* ---------- HERO PANEL (dark) ---------- */
+/* This whole block sits on a dark ledger-green background —
+   the nav lives inside it so the page opens with weight,
+   instead of a flat light page top to bottom. */
+.hero-panel {
+  background: var(--ink-panel);
+  color: var(--ink-panel-text);
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--line);
+  padding: 26px 0;
 }
 .nav-name {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
-.nav-links { display: flex; gap: 24px; font-size: 0.95rem; }
-.nav-links a { color: var(--ink-soft); }
+.nav-links { display: flex; }
+.nav-links a {
+  color: rgba(237,234,224,0.65);
+  margin-left: 28px;
+  font-size: 0.92rem;
+}
+.nav-links a:hover { color: var(--ink-panel-text); text-decoration: none; }
 
-/* ---------- HERO ---------- */
-.hero { padding: 72px 0 56px; }
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 48px;
+  align-items: start;
+  padding: 40px 0 64px;
+  border-top: none;
+}
+@media (max-width: 720px) { .hero { grid-template-columns: 1fr; gap: 32px; } }
+
 .hero-eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--accent);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .hero h1 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(2.1rem, 5vw, 3rem);
-  line-height: 1.12;
-  margin: 0 0 18px;
-  max-width: 14ch;
+  font-size: clamp(2.2rem, 4.2vw, 3.1rem);
+  line-height: 1.1;
+  margin: 0 0 20px;
+  color: var(--ink-panel-text);
 }
 .hero p {
-  font-size: 1.1rem;
-  color: var(--ink-soft);
-  max-width: 52ch;
-  margin: 0 0 28px;
+  font-size: 1.08rem;
+  color: rgba(237,234,224,0.72);
+  max-width: 48ch;
+  margin: 0;
 }
 
-/* Readout strip — small honest stats styled like a data output.
-   This is the one "signature" visual flourish of the page. */
-.readouts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  margin-top: 12px;
+/* Ledger card — the signature element. Styled like a printed
+   receipt/readout sitting inside the dark panel. */
+.ledger {
+  background: rgba(237,234,224,0.04);
+  border: 1px solid rgba(237,234,224,0.18);
+  padding: 22px 24px;
 }
-.readout {
-  flex: 1 1 160px;
-  padding: 18px 20px;
-  border-right: 1px solid var(--line);
-}
-.readout:last-child { border-right: none; }
-.readout-value {
+.ledger-title {
   font-family: var(--font-mono);
-  font-size: 1.4rem;
-  color: var(--accent);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(237,234,224,0.5);
+  border-bottom: 1px dashed rgba(237,234,224,0.25);
+  padding-bottom: 12px;
+  margin-bottom: 14px;
 }
-.readout-label {
-  font-size: 0.82rem;
-  color: var(--ink-soft);
-  margin-top: 2px;
+.ledger-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(237,234,224,0.15);
+  font-family: var(--font-mono);
+}
+.ledger-row:last-of-type { border-bottom: none; }
+.ledger-value {
+  color: var(--accent);
+  font-size: 1.15rem;
+}
+.ledger-label {
+  font-size: 0.8rem;
+  color: rgba(237,234,224,0.6);
+  text-align: right;
+  max-width: 18ch;
 }
 
 /* ---------- SECTION HEADINGS ---------- */
