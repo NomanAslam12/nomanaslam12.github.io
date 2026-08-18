@@ -1,0 +1,255 @@
+/* =====================================================
+   DESIGN TOKENS — change a value here and it updates
+   everywhere that uses it. This is the only place you
+   should need to touch colors/fonts.
+   ===================================================== */
+:root {
+  --paper: #EFEDE6;         /* page background, below the hero */
+  --ink-panel: #16211D;     /* dark ledger-green hero panel */
+  --ink-panel-text: #EDEAE0;
+  --ink: #14170F;           /* main text on light background */
+  --ink-soft: #5B5F52;      /* secondary text */
+  --line: #CFCBBD;          /* hairline borders/dividers */
+  --accent: #C9622A;        /* burnt amber — the one accent color, used sparingly */
+  --accent-soft: #FBEDE2;   /* pale accent background (tags, chips) */
+  --flag: #8A3A16;          /* darker amber for callouts */
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --max-width: 1040px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- HERO PANEL (dark) ---------- */
+/* This whole block sits on a dark ledger-green background —
+   the nav lives inside it so the page opens with weight,
+   instead of a flat light page top to bottom. */
+.hero-panel {
+  background: var(--ink-panel);
+  color: var(--ink-panel-text);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 0;
+}
+.nav-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.nav-links { display: flex; }
+.nav-links a {
+  color: rgba(237,234,224,0.65);
+  margin-left: 28px;
+  font-size: 0.92rem;
+}
+.nav-links a:hover { color: var(--ink-panel-text); text-decoration: none; }
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 48px;
+  align-items: start;
+  padding: 40px 0 64px;
+  border-top: none;
+}
+@media (max-width: 720px) { .hero { grid-template-columns: 1fr; gap: 32px; } }
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 4.2vw, 3.1rem);
+  line-height: 1.1;
+  margin: 0 0 20px;
+  color: var(--ink-panel-text);
+}
+.hero p {
+  font-size: 1.08rem;
+  color: rgba(237,234,224,0.72);
+  max-width: 48ch;
+  margin: 0;
+}
+
+/* Ledger card — the signature element. Styled like a printed
+   receipt/readout sitting inside the dark panel. */
+.ledger {
+  background: rgba(237,234,224,0.04);
+  border: 1px solid rgba(237,234,224,0.18);
+  padding: 22px 24px;
+}
+.ledger-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(237,234,224,0.5);
+  border-bottom: 1px dashed rgba(237,234,224,0.25);
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+}
+.ledger-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(237,234,224,0.15);
+  font-family: var(--font-mono);
+}
+.ledger-row:last-of-type { border-bottom: none; }
+.ledger-value {
+  color: var(--accent);
+  font-size: 1.15rem;
+}
+.ledger-label {
+  font-size: 0.8rem;
+  color: rgba(237,234,224,0.6);
+  text-align: right;
+  max-width: 18ch;
+}
+
+/* ---------- SECTION HEADINGS ---------- */
+section { padding: 56px 0; border-top: 1px solid var(--line); }
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin: 0 0 24px;
+}
+
+/* ---------- ABOUT ---------- */
+.about p { max-width: 62ch; color: var(--ink-soft); font-size: 1.03rem; }
+
+/* ---------- PROJECT CARDS ---------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 640px) { .projects-grid { grid-template-columns: 1fr; } }
+
+.project-card {
+  border: 1px solid var(--line);
+  background: white;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.project-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin: 0;
+}
+.project-card .problem { color: var(--ink-soft); font-size: 0.95rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+.card-link { margin-top: auto; font-weight: 600; font-size: 0.95rem; }
+
+/* ---------- SKILLS ---------- */
+.skills-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 640px) { .skills-groups { grid-template-columns: 1fr; } }
+.skill-group h4 {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+}
+.skill-group ul { margin: 0; padding: 0; list-style: none; }
+.skill-group li { padding: 4px 0; border-bottom: 1px dotted var(--line); font-size: 0.95rem; }
+
+/* ---------- CONTACT ---------- */
+.contact-links { display: flex; flex-direction: column; gap: 10px; font-size: 1.05rem; }
+
+footer {
+  padding: 32px 0 60px;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+/* ---------- CASE STUDY PAGE ---------- */
+.case-header { padding: 56px 0 32px; }
+.back-link { font-family: var(--font-mono); font-size: 0.85rem; }
+.case-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin: 18px 0 8px;
+}
+.case-body h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 40px 0 14px;
+}
+.case-body p, .case-body li { color: var(--ink-soft); font-size: 1.02rem; }
+.case-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.92rem;
+}
+.case-body th, .case-body td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+}
+.case-body th { color: var(--ink-soft); font-weight: 600; }
+.flag-note {
+  border-left: 3px solid var(--flag);
+  background: #FBF1EA;
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  color: var(--ink);
+  margin: 20px 0;
+}
