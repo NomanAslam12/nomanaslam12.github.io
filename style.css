@@ -232,6 +232,13 @@ footer {
   margin: 40px 0 14px;
 }
 .case-body p, .case-body li { color: var(--ink-soft); font-size: 1.02rem; }
+.case-body img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+  margin: 20px 0;
+}
 .case-body table {
   width: 100%;
   border-collapse: collapse;
