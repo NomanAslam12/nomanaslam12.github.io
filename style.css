@@ -196,6 +196,38 @@ section { padding: 56px 0; border-top: 1px solid var(--line); }
 }
 .card-link { margin-top: auto; font-weight: 600; font-size: 0.95rem; }
 
+/* Flat "other projects" list — deliberately plain, no cards or tags.
+   For smaller projects that don't need a full case study. */
+.other-projects { margin-top: 32px; }
+.other-project-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px dotted var(--line);
+}
+.other-project-row:first-child { border-top: 1px dotted var(--line); }
+.other-project-name {
+  font-weight: 600;
+  flex: 0 0 auto;
+  min-width: 200px;
+}
+.other-project-desc {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  flex: 1 1 auto;
+}
+.other-project-link {
+  flex: 0 0 auto;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .other-project-row { flex-direction: column; gap: 4px; }
+  .other-project-name { min-width: 0; }
+}
+
 /* ---------- SKILLS ---------- */
 .skills-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 @media (max-width: 640px) { .skills-groups { grid-template-columns: 1fr; } }
