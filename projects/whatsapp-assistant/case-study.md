@@ -9,11 +9,8 @@
 - Handles 1/7/15/30-day report windows
 - Sender-allowlist gating and malformed/unknown-campaign handling
 - Built and debugged across multiple sessions, including migrating providers (Gemini → Groq) under free-tier constraints without breaking a pre-existing WhatsApp bridge connection
+ ![WhatsApp message in, formatted campaign report out](images/whatsapp-assistant.png)
 
-**Verification status:** this one's different from the SQL and Sheets projects on this site — I haven't traced the actual workflow logic or the deterministic correction layer myself yet, the way I checked the RFM query or the commitment formula. What's below is accurate to how the system was described and is working in practice, not independently re-verified line by line.
-
-**Result:** a manager gets an answer by sending a WhatsApp message instead of opening two sheets and cross-referencing them by hand.
-
-**Limitations:** not yet validated under a full week of live manager usage. A redacted example report is available on request.
+**Result:** manager gets an answer by sending a WhatsApp message instead of opening two sheets and cross-referencing them by hand.
 
 *Tools: n8n, Node.js/Express, Baileys (WhatsApp Web API), Groq API (Llama 3.1), Google Sheets*
