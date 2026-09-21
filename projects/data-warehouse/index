@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — Noman Aslam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/11.1.1/marked.min.js"></script>
+</head>
+<body>
+
+<div class="hero-panel" style="padding-bottom: 24px;">
+  <div class="wrap">
+    <nav class="nav">
+      <div class="nav-name">Noman Aslam</div>
+      <div class="nav-links">
+        <a href="../../index.html#projects">Projects</a>
+        <a href="../../index.html#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="case-header">
+    <a class="back-link" href="../../index.html#projects">← All projects</a>
+  </div>
+
+  <!-- Content below is pulled from case-study.md in this same folder.
+       To edit what shows on this page, edit case-study.md — never this file. -->
+  <div class="case-body" id="content">Loading…</div>
+
+  <footer>Noman Aslam — Karachi, Pakistan</footer>
+</div>
+
+<script>
+  fetch('case-study.md')
+    .then(r => {
+      if (!r.ok) throw new Error('not found');
+      return r.text();
+    })
+    .then(md => {
+      document.getElementById('content').innerHTML = marked.parse(md);
+    })
+    .catch(() => {
+      document.getElementById('content').innerHTML =
+        '<p>Could not load case study content. Make sure case-study.md is uploaded in this same folder.</p>';
+    });
+</script>
+
+</body>
+</html>
