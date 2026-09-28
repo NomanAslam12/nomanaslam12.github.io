@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#16211D">
+<meta name="theme-color" content="#16211D" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#EFEDE6" media="(prefers-color-scheme: light)">
 <title>Noman Aslam &mdash; Data / BI Analyst</title>
 <meta name="description" content="Data and BI analyst portfolio: SQL, Power BI, Looker Studio, automation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,8 +62,8 @@
           <span class="ledger-label">US states covered by the CPL commitment tool</span>
         </div>
         <div class="ledger-row">
-          <span class="ledger-value">~5%</span>
-          <span class="ledger-label">connectivity gain from dynamic DID allocation</span>
+          <span class="ledger-value">4</span>
+          <span class="ledger-label">live reporting systems owned end-to-end</span>
         </div>
       </div>
     </section>
@@ -162,9 +163,8 @@
      change the class names (flagship-card <-> mini-card). -->
 <div class="wrap">
   <section id="projects">
-<<<<<<< HEAD
     <div class="section-label">Selected projects</div>
-    <div class="section-title"></div>
+    <p class="projects-intro">A mix of production work and independent builds. Flagship projects include the reasoning and limitations; smaller builds are listed for completeness.</p>
 
     <div class="flagship-grid">
 
@@ -174,44 +174,13 @@
           <div class="card-meta">Work data &middot; in use</div>
           <h3>Lead Commitment Dashboard</h3>
           <p>Managers get a floor-to-stretch lead range for each state before every client call, replacing one flat national CPL average.</p>
+          <div class="card-outcome">Used before every client commitment call</div>
           <div class="tags">
             <span class="tag">Looker Studio</span>
             <span class="tag">Google Sheets</span>
             <span class="tag">Forecasting</span>
           </div>
           <a class="card-link" href="projects/lead-commitment/">View case study &rarr;</a>
-=======
-    <div class="section-label">Featured Projects</div>
-    <div class="section-title"></div>
-    <div class="projects-grid">
-
-      <div class="project-card">
-        <h3>SQL Data Warehouse — Medallion Architecture</h3>
-        <p class="problem">
-          CRM and ERP exports disagreed on formats, and the source's own sales
-          figures didn't reliably equal quantity × price. Built a Bronze/Silver/Gold
-          warehouse in SQL Server that resolves both before reporting ever sees the data.
-        </p>
-        <div class="tags">
-          <span class="tag">SQL Server</span>
-          <span class="tag">T-SQL</span>
-          <span class="tag">Data Modeling</span>
-        </div>
-        <a class="card-link" href="projects/data-warehouse/index.html">View case study →</a>
-      </div>
-
-      <div class="project-card">
-        <h3>RFM Customer Segmentation & Churn Risk</h3>
-        <p class="problem">
-          LTV-only segmentation couldn't tell an active high spender from one
-          who'd already gone quiet. Built RFM scoring in PostgreSQL to find
-          and size the gap.
-        </p>
-        <div class="tags">
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">RFM</span>
-          <span class="tag">NTILE</span>
->>>>>>> 3e5f2e7cfba71ebdec866b6d87bd7d378bfd5f38
         </div>
       </div>
 
@@ -221,6 +190,7 @@
           <div class="card-meta">Course dataset</div>
           <h3>SQL Data Warehouse (Medallion)</h3>
           <p>CRM and ERP exports with conflicting formats resolved into one star schema, with the sales amount recalculated instead of trusted.</p>
+          <div class="card-outcome">Source data quality resolved upstream, not in reports</div>
           <div class="tags">
             <span class="tag">SQL Server</span>
             <span class="tag">T-SQL</span>
@@ -295,16 +265,19 @@
       <a href="mailto:mnoman.aslam012@gmail.com">Email</a>
       <a href="https://github.com/NomanAslam12">GitHub</a>
       <a href="https://www.linkedin.com/in/muhammad-noman-aslam-30125b125">LinkedIn</a>
-<<<<<<< HEAD
       <a href="resume.pdf" download data-resume>Resume (PDF)</a>
-=======
-
->>>>>>> 3e5f2e7cfba71ebdec866b6d87bd7d378bfd5f38
     </div>
   </section>
 
   <footer>
-    Noman Aslam &mdash; Karachi, Pakistan
+    <div class="footer-line">Noman Aslam &mdash; Karachi, Pakistan</div>
+    <div class="footer-cta">
+      <a href="mailto:mnoman.aslam012@gmail.com">mnoman.aslam012@gmail.com</a>
+      <span class="footer-sep">&middot;</span>
+      <a href="resume.pdf" download data-resume>Resume</a>
+      <span class="footer-sep">&middot;</span>
+      <a href="https://www.linkedin.com/in/muhammad-noman-aslam-30125b125">LinkedIn</a>
+    </div>
   </footer>
 </div>
 
