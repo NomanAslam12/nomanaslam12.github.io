@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#16211D">
+<title>Noman Aslam &mdash; Data / BI Analyst</title>
+<meta name="description" content="Data and BI analyst portfolio: SQL, Power BI, Looker Studio, automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== STICKY HEADER ===================== -->
+<!-- The Resume button hides itself until resume.pdf exists in the repo root. -->
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="nav-name" href="#top">Noman Aslam</a>
+      <div class="nav-links">
+        <a class="nav-opt" href="#about">About</a>
+        <a class="nav-opt" href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a class="nav-opt" href="#contact">Contact</a>
+        <a class="btn btn-sm" href="resume.pdf" download data-resume>Resume</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<div class="hero-panel" id="top">
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <div class="hero-eyebrow">Data / BI Analyst</div>
+        <h1>I turn operational data into decisions people actually act on.</h1>
+        <p>
+          SQL, Power BI and Looker Studio work built around real business questions.
+          I check numbers against source logic before I share them, and I say what a
+          number doesn't prove as plainly as what it does.
+        </p>
+        <div class="hero-now"><span>Now</span>Leading data and reporting for a real estate BPO's outbound dialer operations</div>
+        <div class="hero-cta">
+          <a class="btn" href="#projects">View projects</a>
+          <a class="btn btn-ghost" href="resume.pdf" download data-resume>Download resume</a>
+        </div>
+        <div class="hero-stack">PostgreSQL &middot; SQL Server &middot; BigQuery &middot; Power BI &middot; Looker Studio &middot; n8n</div>
+      </div>
+
+      <!-- Numbers below come from my own work records. Edit them freely. -->
+      <div class="ledger">
+        <div class="ledger-title">At work</div>
+        <div class="ledger-row">
+          <span class="ledger-value">17</span>
+          <span class="ledger-label">analyses, dashboards and automations delivered</span>
+        </div>
+        <div class="ledger-row">
+          <span class="ledger-value">37</span>
+          <span class="ledger-label">US states covered by the CPL commitment tool</span>
+        </div>
+        <div class="ledger-row">
+          <span class="ledger-value">~5%</span>
+          <span class="ledger-label">connectivity gain from dynamic DID allocation</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ===================== ABOUT + HOW I WORK ===================== -->
+<div class="wrap">
+  <section id="about" class="about">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">About</div>
+        <p>
+          I lead data and reporting for a real estate BPO's outbound dialer operations,
+          where I build campaign diagnostics, GM-facing reporting, and KPI dashboards
+          on top of BigQuery, Power BI, and Looker Studio. Outside that, I build SQL
+          and automation projects to keep pushing past what day-to-day operational
+          reporting requires.
+        </p>
+      </div>
+      <div>
+        <div class="section-label">How I work</div>
+        <ul class="how-list">
+          <li>
+            <span class="how-num">01</span>
+            <div>
+              <h4>Start from the decision</h4>
+              <p>Each project below began with something a person had to decide: how many leads to promise a client, which customers to win back, which source system to believe.</p>
+            </div>
+          </li>
+          <li>
+            <span class="how-num">02</span>
+            <div>
+              <h4>Check the number before sharing it</h4>
+              <p>On the RFM project that meant testing for NULLs and for ties at the score boundaries. On the lead dashboard it meant tracing the commitment formula back to the live CPL feed.</p>
+            </div>
+          </li>
+          <li>
+            <span class="how-num">03</span>
+            <div>
+              <h4>Say what the number doesn't show</h4>
+              <p>Every case study ends with its limitations: what wasn't measured, what wasn't validated, what the data can't support.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== SKILLS ===================== -->
+<div class="wrap">
+  <section id="skills">
+    <div class="section-label">Skills</div>
+    <div class="section-title"></div>
+    <div class="skills-groups">
+      <div class="skill-group">
+        <h4>Querying & Analysis</h4>
+        <ul>
+          <li>SQL (PostgreSQL)</li>
+          <li>T-SQL</li>
+          <li>Excel / Power Query</li>
+          <li>Statistical & variance analysis</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Visualization & Reporting</h4>
+        <ul>
+          <li>Power BI</li>
+          <li>Looker Studio</li>
+          <li>Google Sheets</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Data Infrastructure</h4>
+        <ul>
+          <li>BigQuery</li>
+          <li>SQL Server</li>
+          <li>Apps Script</li>
+          <li>Git / GitHub</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Automation</h4>
+        <ul>
+          <li>n8n</li>
+          <li>Google Apps Script</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PROJECTS ===================== -->
+<!-- Two flagship cards, then smaller cards, then a plain list.
+     To swap a flagship: move its block between the two grids and
+     change the class names (flagship-card <-> mini-card). -->
+<div class="wrap">
+  <section id="projects">
+<<<<<<< HEAD
+    <div class="section-label">Selected projects</div>
+    <div class="section-title"></div>
+
+    <div class="flagship-grid">
+
+      <div class="flagship-card">
+        <img class="card-thumb" src="projects/lead-commitment/images/lead-commitment-dashboard.png" alt="Lead commitment dashboard with a floor-to-stretch lead range and a state CPL table" loading="lazy">
+        <div class="flagship-body">
+          <div class="card-meta">Work data &middot; in use</div>
+          <h3>Lead Commitment Dashboard</h3>
+          <p>Managers get a floor-to-stretch lead range for each state before every client call, replacing one flat national CPL average.</p>
+          <div class="tags">
+            <span class="tag">Looker Studio</span>
+            <span class="tag">Google Sheets</span>
+            <span class="tag">Forecasting</span>
+          </div>
+          <a class="card-link" href="projects/lead-commitment/">View case study &rarr;</a>
+=======
+    <div class="section-label">Featured Projects</div>
+    <div class="section-title"></div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <h3>SQL Data Warehouse — Medallion Architecture</h3>
+        <p class="problem">
+          CRM and ERP exports disagreed on formats, and the source's own sales
+          figures didn't reliably equal quantity × price. Built a Bronze/Silver/Gold
+          warehouse in SQL Server that resolves both before reporting ever sees the data.
+        </p>
+        <div class="tags">
+          <span class="tag">SQL Server</span>
+          <span class="tag">T-SQL</span>
+          <span class="tag">Data Modeling</span>
+        </div>
+        <a class="card-link" href="projects/data-warehouse/index.html">View case study →</a>
+      </div>
+
+      <div class="project-card">
+        <h3>RFM Customer Segmentation & Churn Risk</h3>
+        <p class="problem">
+          LTV-only segmentation couldn't tell an active high spender from one
+          who'd already gone quiet. Built RFM scoring in PostgreSQL to find
+          and size the gap.
+        </p>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">RFM</span>
+          <span class="tag">NTILE</span>
+>>>>>>> 3e5f2e7cfba71ebdec866b6d87bd7d378bfd5f38
+        </div>
+      </div>
+
+      <div class="flagship-card">
+        <img class="card-thumb contain" src="projects/data-warehouse/images/data_architecture.drawio.png" alt="Bronze, Silver and Gold warehouse architecture diagram" loading="lazy">
+        <div class="flagship-body">
+          <div class="card-meta">Course dataset</div>
+          <h3>SQL Data Warehouse (Medallion)</h3>
+          <p>CRM and ERP exports with conflicting formats resolved into one star schema, with the sales amount recalculated instead of trusted.</p>
+          <div class="tags">
+            <span class="tag">SQL Server</span>
+            <span class="tag">T-SQL</span>
+            <span class="tag">Star schema</span>
+          </div>
+          <a class="card-link" href="projects/data-warehouse/index.html">View case study &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tier-label">More projects</div>
+    <div class="mini-grid">
+
+      <div class="mini-card">
+        <div class="card-meta">Sample dataset</div>
+        <h3>RFM Segmentation &amp; Churn Risk</h3>
+        <p>Found 6,878 customers, $56.9M in past revenue, who looked high-value on spend but had gone quiet.</p>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">NTILE</span>
+        </div>
+        <a class="card-link" href="projects/rfm-segmentation/">View case study &rarr;</a>
+      </div>
+
+      <div class="mini-card">
+        <div class="card-meta">Sample dataset</div>
+        <h3>Segmentation, Cohort &amp; Retention</h3>
+        <p>The top 25% of customers drive 66% of revenue, and every acquisition cohort churns to about 90% within 2-3 years.</p>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Cohorts</span>
+        </div>
+        <a class="card-link" href="projects/customer-segmentation/">View case study &rarr;</a>
+      </div>
+
+      <div class="mini-card">
+        <div class="card-meta">Work data &middot; live</div>
+        <h3>WhatsApp Diagnostic Assistant</h3>
+        <p>A WhatsApp message with a campaign name and date range returns a formatted performance report.</p>
+        <div class="tags">
+          <span class="tag">n8n</span>
+          <span class="tag">Node.js</span>
+        </div>
+        <a class="card-link" href="projects/whatsapp-assistant/">View case study &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="tier-label">Smaller builds</div>
+    <div class="other-projects">
+      <div class="other-project-row">
+        <div class="other-project-name">DID Allocation Optimization</div>
+        <div class="other-project-desc">Dynamic DID-to-dialer allocation tool replacing static assignment; improved connectivity and reduced spam-driven call drops.</div>
+        <div class="other-project-link"></div>
+      </div>
+      <div class="other-project-row">
+        <div class="other-project-name">Data Analyst Job Market Study</div>
+        <div class="other-project-desc">Queried a structured job-postings dataset in PostgreSQL to build an evidence-based personal skill-priority roadmap.</div>
+        <div class="other-project-link"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== CONTACT ===================== -->
+<div class="wrap">
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <div class="section-title">Get in touch</div>
+    <div class="contact-links">
+      <a href="mailto:mnoman.aslam012@gmail.com">Email</a>
+      <a href="https://github.com/NomanAslam12">GitHub</a>
+      <a href="https://www.linkedin.com/in/muhammad-noman-aslam-30125b125">LinkedIn</a>
+<<<<<<< HEAD
+      <a href="resume.pdf" download data-resume>Resume (PDF)</a>
+=======
+
+>>>>>>> 3e5f2e7cfba71ebdec866b6d87bd7d378bfd5f38
+    </div>
+  </section>
+
+  <footer>
+    Noman Aslam &mdash; Karachi, Pakistan
+  </footer>
+</div>
+
+<script>
+  // Hide resume links until resume.pdf is actually in the repo, so nobody hits a 404.
+  document.querySelectorAll('[data-resume]').forEach(function (a) {
+    fetch(a.getAttribute('href'), { method: 'HEAD' })
+      .then(function (r) { if (!r.ok) a.style.display = 'none'; })
+      .catch(function () { a.style.display = 'none'; });
+  });
+</script>
+
+</body>
+</html>
