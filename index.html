@@ -14,7 +14,6 @@
 <body>
 
 <!-- ===================== STICKY HEADER ===================== -->
-<!-- The Resume button hides itself until resume.pdf exists in the repo root. -->
 <header class="site-header">
   <div class="wrap">
     <nav class="nav">
@@ -50,21 +49,9 @@
         <div class="hero-stack">PostgreSQL &middot; SQL Server &middot; BigQuery &middot; Power BI &middot; Looker Studio &middot; n8n</div>
       </div>
 
-      <!-- Numbers below come from my own work records. Edit them freely. -->
-      <div class="ledger">
-        <div class="ledger-title">At work</div>
-        <div class="ledger-row">
-          <span class="ledger-value">17</span>
-          <span class="ledger-label">analyses, dashboards and automations delivered</span>
-        </div>
-        <div class="ledger-row">
-          <span class="ledger-value">37</span>
-          <span class="ledger-label">US states covered by the CPL commitment tool</span>
-        </div>
-        <div class="ledger-row">
-          <span class="ledger-value">4</span>
-          <span class="ledger-label">live reporting systems owned end-to-end</span>
-        </div>
+      <!-- Portrait column -->
+      <div class="hero-portrait">
+        <img src="images/noman-portrait.jpg" alt="Noman Aslam, Data and BI Analyst">
       </div>
     </section>
   </div>
@@ -158,13 +145,10 @@
 </div>
 
 <!-- ===================== PROJECTS ===================== -->
-<!-- Two flagship cards, then smaller cards, then a plain list.
-     To swap a flagship: move its block between the two grids and
-     change the class names (flagship-card <-> mini-card). -->
 <div class="wrap">
   <section id="projects">
     <div class="section-label">Selected projects</div>
-    <p class="projects-intro">A mix of production work and independent builds. Flagship projects include the reasoning and limitations; smaller builds are listed for completeness.</p>
+    <p class="projects-intro">A mix of production work and independent builds. Each flagship project below includes the reasoning, the numbers I verified, and the limitations I'd want you to know.</p>
 
     <div class="flagship-grid">
 
@@ -200,42 +184,68 @@
         </div>
       </div>
 
-    </div>
-
-    <div class="tier-label">More projects</div>
-    <div class="mini-grid">
-
-      <div class="mini-card">
-        <div class="card-meta">Sample dataset</div>
-        <h3>RFM Segmentation &amp; Churn Risk</h3>
-        <p>Found 6,878 customers, $56.9M in past revenue, who looked high-value on spend but had gone quiet.</p>
-        <div class="tags">
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">NTILE</span>
+      <div class="flagship-card">
+        <img class="card-thumb" src="projects/rfm-segmentation/images/4_rfm_segmentation.png" alt="RFM segmentation scatter plot showing customer value vs. recency" loading="lazy">
+        <div class="flagship-body">
+          <div class="card-meta">Sample dataset</div>
+          <h3>RFM Segmentation &amp; Churn Risk</h3>
+          <p>LTV-only segmentation couldn't tell an active high spender from one who'd already gone quiet. Built RFM scoring in PostgreSQL to find and size the gap.</p>
+          <div class="card-outcome">Found 6,878 at-risk high-value customers</div>
+          <div class="tags">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">NTILE</span>
+            <span class="tag">RFM</span>
+          </div>
+          <a class="card-link" href="projects/rfm-segmentation/">View case study &rarr;</a>
         </div>
-        <a class="card-link" href="projects/rfm-segmentation/">View case study &rarr;</a>
       </div>
 
-      <div class="mini-card">
-        <div class="card-meta">Sample dataset</div>
-        <h3>Segmentation, Cohort &amp; Retention</h3>
-        <p>The top 25% of customers drive 66% of revenue, and every acquisition cohort churns to about 90% within 2-3 years.</p>
-        <div class="tags">
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">Cohorts</span>
+      <div class="flagship-card">
+        <img class="card-thumb" src="projects/customer-segmentation/images/2_cohort_analysis.png" alt="Customer cohort retention analysis chart" loading="lazy">
+        <div class="flagship-body">
+          <div class="card-meta">Sample dataset</div>
+          <h3>Segmentation, Cohort &amp; Retention</h3>
+          <p>Segmented customers by LTV, tracked cohort revenue trends, and measured retention drop-off to find where the business was structurally leaking customers.</p>
+          <div class="card-outcome">Top 25% of customers drive 66% of revenue</div>
+          <div class="tags">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Cohorts</span>
+            <span class="tag">Retention</span>
+          </div>
+          <a class="card-link" href="projects/customer-segmentation/">View case study &rarr;</a>
         </div>
-        <a class="card-link" href="projects/customer-segmentation/">View case study &rarr;</a>
       </div>
 
-      <div class="mini-card">
-        <div class="card-meta">Work data &middot; live</div>
-        <h3>WhatsApp Diagnostic Assistant</h3>
-        <p>A WhatsApp message with a campaign name and date range returns a formatted performance report.</p>
-        <div class="tags">
-          <span class="tag">n8n</span>
-          <span class="tag">Node.js</span>
+      <div class="flagship-card">
+        <img class="card-thumb" src="projects/whatsapp-assistant/images/whatsapp-assistant.png" alt="WhatsApp diagnostic assistant returning a formatted campaign performance report" loading="lazy">
+        <div class="flagship-body">
+          <div class="card-meta">Work data &middot; live</div>
+          <h3>WhatsApp Diagnostic Assistant</h3>
+          <p>Manual cross-referencing of two tracking sheets was the only way to get campaign performance data. Built an n8n pipeline that turns a WhatsApp message into an on-demand report.</p>
+          <div class="card-outcome">Replaced manual cross-referencing of two sheets</div>
+          <div class="tags">
+            <span class="tag">n8n</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Automation</span>
+          </div>
+          <a class="card-link" href="projects/whatsapp-assistant/">View case study &rarr;</a>
         </div>
-        <a class="card-link" href="projects/whatsapp-assistant/">View case study &rarr;</a>
+      </div>
+
+      <div class="flagship-card">
+        <img class="card-thumb contain" src="projects/data-warehouse/images/data_model.drawio.png" alt="Star schema data model for the SQL data warehouse" loading="lazy">
+        <div class="flagship-body">
+          <div class="card-meta">Work data &middot; ongoing</div>
+          <h3>DID Allocation Optimization</h3>
+          <p>Dynamic DID-to-dialer allocation tool replacing static assignment; improved connectivity and reduced spam-driven call drops.</p>
+          <div class="card-outcome">~5% lift in dialer connectivity</div>
+          <div class="tags">
+            <span class="tag">SQL</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Operations</span>
+          </div>
+          <a class="card-link" href="#contact">Ask for details &rarr;</a>
+        </div>
       </div>
 
     </div>
@@ -243,16 +253,12 @@
     <div class="tier-label">Smaller builds</div>
     <div class="other-projects">
       <div class="other-project-row">
-        <div class="other-project-name">DID Allocation Optimization</div>
-        <div class="other-project-desc">Dynamic DID-to-dialer allocation tool replacing static assignment; improved connectivity and reduced spam-driven call drops.</div>
-        <div class="other-project-link"></div>
-      </div>
-      <div class="other-project-row">
         <div class="other-project-name">Data Analyst Job Market Study</div>
         <div class="other-project-desc">Queried a structured job-postings dataset in PostgreSQL to build an evidence-based personal skill-priority roadmap.</div>
         <div class="other-project-link"></div>
       </div>
     </div>
+
   </section>
 </div>
 
