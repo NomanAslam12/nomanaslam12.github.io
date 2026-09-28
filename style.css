@@ -1,19 +1,17 @@
 /* =====================================================
-   DESIGN TOKENS — change a value here and it updates
-   everywhere that uses it. This is the only place you
-   should need to touch colors/fonts.
+   DESIGN TOKENS
    ===================================================== */
 :root {
-  --paper: #EFEDE6;         /* page background, below the hero */
-  --ink-panel: #16211D;     /* dark ledger-green hero panel */
+  --paper: #EFEDE6;
+  --ink-panel: #16211D;
   --ink-panel-text: #EDEAE0;
-  --ink: #14170F;           /* main text on light background */
-  --ink-soft: #5B5F52;      /* secondary text */
-  --line: #CFCBBD;          /* hairline borders/dividers */
-  --accent: #C9622A;        /* burnt amber — the one accent color, used sparingly */
-  --accent-strong: #B4521C; /* darker amber for buttons/emphasis */
-  --accent-soft: #FBEDE2;   /* pale accent background (tags, chips) */
-  --flag: #8A3A16;          /* darker amber for callouts */
+  --ink: #14170F;
+  --ink-soft: #5B5F52;
+  --line: #CFCBBD;
+  --accent: #C9622A;
+  --accent-strong: #B4521C;
+  --accent-soft: #FBEDE2;
+  --flag: #8A3A16;
 
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Inter', -apple-system, sans-serif;
@@ -122,7 +120,7 @@ a:focus-visible, button:focus-visible {
 }
 
 /* =====================================================
-   HERO PANEL
+   HERO
    ===================================================== */
 .hero-panel {
   background: var(--ink-panel);
@@ -131,10 +129,10 @@ a:focus-visible, button:focus-visible {
 
 .hero {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
   gap: 48px;
-  align-items: start;
-  padding: 56px 0 64px;
+  align-items: center;
+  padding: 56px 0 72px;
 }
 @media (max-width: 720px) {
   .hero { grid-template-columns: 1fr; gap: 32px; }
@@ -193,40 +191,23 @@ a:focus-visible, button:focus-visible {
   margin-top: 18px;
 }
 
-/* ---------- LEDGER CARD ---------- */
-.ledger {
-  background: rgba(237,234,224,0.04);
-  border: 1px solid rgba(237,234,224,0.18);
-  padding: 22px 24px;
-}
-.ledger-title {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: rgba(237,234,224,0.5);
-  border-bottom: 1px dashed rgba(237,234,224,0.25);
-  padding-bottom: 12px;
-  margin-bottom: 14px;
-}
-.ledger-row {
+/* ---------- PORTRAIT ---------- */
+.hero-portrait {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 10px 0;
-  border-bottom: 1px dashed rgba(237,234,224,0.15);
-  font-family: var(--font-mono);
+  justify-content: center;
+  align-items: center;
 }
-.ledger-row:last-of-type { border-bottom: none; }
-.ledger-value {
-  color: var(--accent);
-  font-size: 1.15rem;
+.hero-portrait img {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(237,234,224,0.18);
+  display: block;
 }
-.ledger-label {
-  font-size: 0.8rem;
-  color: rgba(237,234,224,0.6);
-  text-align: right;
-  max-width: 24ch;
+@media (max-width: 720px) {
+  .hero-portrait img { max-width: 200px; margin: 0 auto; }
 }
 
 /* =====================================================
@@ -342,14 +323,17 @@ section {
 }
 
 /* =====================================================
-   PROJECT CARDS — FLAGSHIP
+   FLAGSHIP GRID — 3 columns
    ===================================================== */
 .flagship-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-@media (max-width: 720px) {
+@media (max-width: 960px) {
+  .flagship-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
   .flagship-grid { grid-template-columns: 1fr; }
 }
 
@@ -358,12 +342,12 @@ section {
   background: #fff;
   display: flex;
   flex-direction: column;
-  min-height: 480px;
+  min-height: 520px;
 }
 
 .card-thumb {
   width: 100%;
-  height: 250px;
+  height: 200px;
   object-fit: cover;
   object-position: top;
   display: block;
@@ -372,12 +356,12 @@ section {
 }
 .card-thumb.contain {
   object-fit: contain;
-  padding: 24px;
+  padding: 20px;
   background: #FAFAF7;
 }
 
 .flagship-body {
-  padding: 22px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -385,73 +369,32 @@ section {
 }
 .flagship-body h3 {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.15rem;
+  line-height: 1.25;
   margin: 0;
 }
 .flagship-body p {
   margin: 0;
   color: var(--ink-soft);
-  font-size: 0.97rem;
+  font-size: 0.93rem;
 }
 
-/* Card meta label */
 .card-meta {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: var(--ink-soft);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
-/* Outcome line — the senior-signal touch */
 .card-outcome {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--accent-strong);
   font-weight: 600;
   border-left: 2px solid var(--accent-strong);
   padding-left: 8px;
   margin-top: 2px;
-}
-
-/* =====================================================
-   PROJECT CARDS — MINI
-   ===================================================== */
-.tier-label {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--ink-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin: 36px 0 12px;
-}
-
-.mini-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-@media (max-width: 860px) {
-  .mini-grid { grid-template-columns: 1fr; }
-}
-
-.mini-card {
-  border: 1px solid var(--line);
-  background: #fff;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.mini-card h3 {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  line-height: 1.25;
-  margin: 0;
-}
-.mini-card p {
-  margin: 0;
-  color: var(--ink-soft);
-  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 /* =====================================================
@@ -465,7 +408,7 @@ section {
 }
 .tag {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   background: var(--accent-soft);
   color: var(--accent);
   padding: 3px 8px;
@@ -474,12 +417,21 @@ section {
 .card-link {
   margin-top: auto;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 
 /* =====================================================
-   SMALLER BUILDS LIST
+   SMALLER BUILDS
    ===================================================== */
+.tier-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 40px 0 12px;
+}
+
 .other-projects { margin-top: 0; }
 
 .other-project-row {
