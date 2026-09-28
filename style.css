@@ -67,17 +67,47 @@ a:focus-visible, button:focus-visible {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 0;
+  padding: 10px 0;
 }
 
 .nav-name {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: var(--ink-panel-text);
   text-decoration: none;
 }
 .nav-name:hover { text-decoration: none; }
+
+.nav-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(237,234,224,0.35);
+  display: block;
+  flex-shrink: 0;
+}
+
+.nav-name-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.nav-name-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--ink-panel-text);
+}
+.nav-name-role {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: rgba(237,234,224,0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1px;
+}
 
 .nav-links {
   display: flex;
